@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Irregular Income Budget Calculator: Pay Yourself a Steady Salary as a Freelancer</title>
+<meta name="description" content="Free calculator for freelancers and self-employed people with irregular income. Find a safe monthly paycheck, how much tax to set aside, and how big a buffer you need.">
+<meta property="og:title" content="Irregular Income Budget Calculator for Freelancers">
+<meta property="og:description" content="Find a steady monthly paycheck you can pay yourself from lumpy freelance income. Free, no sign-up.">
+<meta property="og:image" content="https://andrewlichte.github.io/freelance-paycheck-calculator/01-hero.jpg">
+<link rel="canonical" href="https://andrewlichte.github.io/freelance-paycheck-calculator/">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+:root{--ink:#1f2a28;--muted:#56615e;--green:#1F4E46;--teal:#2A9D8F;--gold:#E9C46A;--cream:#F7F5EF;--line:#e5e1d6;--card:#fff;--bad:#B42318}
+@media (prefers-color-scheme:dark){:root{--ink:#e8ece9;--muted:#a9b3b0;--green:#8fd1bf;--teal:#5cc2b4;--cream:#141a19;--line:#2b3533;--card:#1c2423}}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif;color:var(--ink);background:var(--cream);line-height:1.6}
+.wrap{max-width:860px;margin:0 auto;padding:0 16px}
+header{padding:56px 0 24px}
+.kicker{font-size:13px;letter-spacing:3px;text-transform:uppercase;color:var(--teal);font-weight:700}
+h1{font-size:clamp(30px,5vw,46px);line-height:1.1;color:var(--green);margin:10px 0 14px;letter-spacing:-.5px}
+h2{font-size:clamp(23px,3.4vw,30px);color:var(--green);margin:48px 0 10px;line-height:1.2}
+h3{color:var(--green);margin:26px 0 6px}
+p.lead{font-size:19px;color:var(--muted);margin:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:0 10px 30px rgba(31,78,70,.08)}
+label{display:block;font-weight:600;font-size:14px;margin:14px 0 6px}
+input,textarea{width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:10px;font:inherit;background:var(--cream);color:var(--ink)}
+textarea{min-height:76px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:560px){.row{grid-template-columns:1fr}}
+.hint{font-size:13px;color:var(--muted)}
+button{margin-top:18px;background:var(--green);color:#fff;border:0;border-radius:999px;padding:13px 26px;font:inherit;font-weight:700;cursor:pointer}
+@media (prefers-color-scheme:dark){button{color:#0f1514}}
+.results{display:none;margin-top:22px}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media(max-width:560px){.kpis{grid-template-columns:1fr}}
+.kpi{background:var(--cream);border-radius:12px;padding:14px}
+.kpi b{display:block;font-size:12px;letter-spacing:.5px;text-transform:uppercase;color:var(--muted)}
+.kpi span{font-size:26px;font-weight:800;color:var(--green)}
+.note{margin-top:14px;font-size:15px}
+.cta{display:block;text-align:center;background:var(--gold);color:#1F4E46;font-weight:800;text-decoration:none;border-radius:14px;padding:16px;margin-top:20px;font-size:17px}
+img{max-width:100%;height:auto;border-radius:14px;border:1px solid var(--line);display:block}
+ol li,ul li{margin:6px 0}
+footer{margin:60px 0 40px;font-size:13px;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="kicker">Free tool for freelancers</div>
+  <h1>Irregular income budget calculator</h1>
+  <p class="lead">Enter what you earned over the last few months. Get a steady monthly paycheck you can safely pay yourself, how much to set aside for tax, and the buffer you need so slow months don't hurt.</p>
+</header>
+
+<section class="card" aria-label="Calculator">
+  <label for="inc">Your income for each recent month (6 to 12 months works best)</label>
+  <textarea id="inc">5200, 1510, 7980, 4100, 1440, 9200, 6040, 1620, 6565, 5300</textarea>
+  <div class="hint">Separate with commas or spaces. Include months with zero.</div>
+  <div class="row">
+    <div><label for="tax">Tax set-aside %</label><input id="tax" type="number" value="25" min="0" max="60"></div>
+    <div><label for="biz">Business costs per month</label><input id="biz" type="number" value="150" min="0"></div>
+  </div>
+  <label for="need">What you need for personal bills each month</label>
+  <input id="need" type="number" value="3000" min="0">
+  <button id="go">Calculate my paycheck</button>
+
+  <div class="results" id="out">
+    <div class="kpis">
+      <div class="kpi"><b>Steady paycheck</b><span id="pay">–</span></div>
+      <div class="kpi"><b>Tax to set aside / mo</b><span id="taxo">–</span></div>
+      <div class="kpi"><b>Buffer to start with</b><span id="buf">–</span></div>
+    </div>
+    <p class="note" id="msg"></p>
+    <a class="cta" href="https://andrewlight.gumroad.com/l/buezw">Run this every month with the Freelancer Paycheck System spreadsheet →</a>
+  </div>
+</section>
+
+<h2>Why budgeting on freelance income feels impossible</h2>
+<p>Normal budgets assume the same paycheck every two weeks. Freelancers, contractors and creators get paid in lumps: a big invoice one month, almost nothing the next. If you spend what comes in, you feel rich in good months and panic in slow ones. You also tend to forget that a quarter or more of every payment belongs to the tax office.</p>
+
+<h2>The fix: pay yourself a salary</h2>
+<img src="02-how-it-works.jpg" alt="Chart of uneven monthly freelance income with a flat steady paycheck line across it" loading="lazy" width="1200" height="960">
+<ol>
+  <li><b>Open a holding account.</b> Every client payment lands here first, not in your everyday account.</li>
+  <li><b>Move tax out right away.</b> Send your tax percentage of each payment to a separate tax savings account the day it arrives.</li>
+  <li><b>Pay yourself a fixed paycheck</b> from the holding account on the same day each month. Pick an amount close to your slower months, not your best ones.</li>
+  <li><b>Let the buffer do the work.</b> Big months refill the holding account and slow months draw it down. Aim for 2 to 3 months of paycheck in there.</li>
+  <li><b>Take a bonus when the buffer is full.</b> Anything above your buffer goal is yours to spend, save or invest.</li>
+</ol>
+
+<h2>How much should my freelance paycheck be?</h2>
+<p>Start with your average monthly income after tax and business costs, then trim 10 to 15% for safety. The calculator above does this, and it also replays your actual months to find the smallest starting buffer that never runs dry. If your paycheck comes out lower than your bills, either build the buffer first or cut costs until the numbers meet.</p>
+
+<h2>How much tax should a freelancer set aside?</h2>
+<p>In the US, many self-employed people set aside 25 to 30% of each payment to cover income tax and self-employment tax, and pay it in quarterly estimated payments (April, June, September and January). Your real rate depends on your deductions and where you live, so treat that as a starting point and check with a tax professional.</p>
+
+<h2>Do it in a spreadsheet that does the maths for you</h2>
+<img src="01-hero.jpg" alt="Freelancer Paycheck System spreadsheet dashboard showing income, paycheck, holding account and runway" loading="lazy" width="1200" height="960">
+<p>The <b>Freelancer Paycheck System</b> is a ready-made Excel and Google Sheets template built around this method. Log each payment and it tells you what to move to tax and holding, tracks your buffer and runway, forecasts slow months, flags overspending, and tells you when you can take a bonus. It comes with an example file so you can see it working first.</p>
+<a class="cta" href="https://andrewlight.gumroad.com/l/buezw">Get the Freelancer Paycheck System ($19)</a>
+
+<footer>This page is for planning only and is not tax or financial advice.</footer>
+</div>
+<script>
+const fmt=n=>Math.round(n).toLocaleString();
+function calc(){
+  const inc=(document.getElementById('inc').value.match(/-?\d+(\.\d+)?/g)||[]).map(Number);
+  const tax=(+document.getElementById('tax').value||0)/100;
+  const biz=+document.getElementById('biz').value||0;
+  const need=+document.getElementById('need').value||0;
+  if(inc.length<2){document.getElementById('msg').textContent='Enter at least two months of income.';document.getElementById('out').style.display='block';return;}
+  const net=inc.map(x=>x*(1-tax)-biz);
+  const avg=net.reduce((a,b)=>a+b,0)/net.length;
+  const pay=Math.max(0,Math.floor(avg*0.88/50)*50);
+  // smallest starting buffer that never goes negative when replaying these months
+  let bal=0,low=0;for(const n of net){bal+=n-pay;low=Math.min(low,bal);}
+  const buf=Math.max(-low,pay);
+  const avgTax=inc.reduce((a,b)=>a+b,0)/inc.length*tax;
+  document.getElementById('pay').textContent=fmt(pay);
+  document.getElementById('taxo').textContent=fmt(avgTax);
+  document.getElementById('buf').textContent=fmt(buf);
+  let m=`Based on ${inc.length} months, you can pay yourself about ${fmt(pay)} a month. Start with ${fmt(buf)} in your holding account so the slowest stretch never leaves you short. `;
+  m+= need>pay ? `That is ${fmt(need-pay)} less than your bills, so build the buffer first or trim costs.` : `That covers your ${fmt(need)} of bills with ${fmt(pay-need)} to spare.`;
+  document.getElementById('msg').textContent=m;
+  document.getElementById('out').style.display='block';
+}
+document.getElementById('go').addEventListener('click',calc);
+</script>
+</body>
+</html>
