@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free Invoice Generator for Freelancers: Print or Save as PDF (No Sign-up)</title>
+<meta name="description" content="Free invoice generator for freelancers and contractors. Fill in your details and line items, then print or save a clean invoice as PDF. No sign-up, no watermark.">
+<link rel="canonical" href="https://andrewlichte.github.io/freelance-paycheck-calculator/free-invoice-generator/">
+<meta property="og:title" content="Free invoice generator for freelancers">
+<meta property="og:description" content="Free invoice generator for freelancers and contractors. Fill in your details and line items, then print or save a clean invoice as PDF. No sign-up, no watermark.">
+<meta property="og:url" content="https://andrewlichte.github.io/freelance-paycheck-calculator/free-invoice-generator/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../assets/site.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "Free invoice generator for freelancers", "url": "https://andrewlichte.github.io/freelance-paycheck-calculator/free-invoice-generator/", "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": "Free invoice generator for freelancers and contractors. Fill in your details and line items, then print or save a clean invoice as PDF. No sign-up, no watermark."}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is this invoice generator really free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. There is no sign-up, no watermark and no limit. Everything runs in your browser, and your details are saved only on your own device."}}, {"@type": "Question", "name": "How do I save the invoice as a PDF?", "acceptedAnswer": {"@type": "Answer", "text": "Click Print or save as PDF, then choose Save as PDF (or Microsoft Print to PDF) as the printer. Only the invoice is printed, not the form or the rest of the page."}}, {"@type": "Question", "name": "What payment terms should a freelancer use?", "acceptedAnswer": {"@type": "Answer", "text": "Net 14 or Net 30 are the most common. Shorter terms, or asking for a deposit up front on larger jobs, help with cash flow. Whatever you choose, put the actual due date on the invoice, not just the terms."}}, {"@type": "Question", "name": "How do I keep track of which invoices are paid?", "acceptedAnswer": {"@type": "Answer", "text": "A simple tracker with one row per invoice, its due date and its status is enough. The Freelance Invoice & Client Tracker spreadsheet does this for you and flags anything overdue."}}]}]}</script>
+</head>
+<body>
+<div class="wrap">
+<nav class="top"><a href="../">← Free freelancer money tools</a></nav>
+<header>
+  <div class="kicker">Free tool for freelancers</div>
+  <h1>Free invoice generator for freelancers</h1>
+  <p class="lead">Fill in your details and what you did, then print it or save it as a PDF. No sign-up, no watermark, and nothing is uploaded anywhere.</p>
+</header>
+<style>
+.inv{background:#fff;color:#1f2a28;border:1px solid var(--line);border-radius:14px;padding:32px;margin-top:22px}
+.inv h2{margin:0;color:#1F4E46;font-size:30px}
+.inv .meta{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:20px 0}
+.inv .meta div{white-space:pre-line;font-size:14px}
+.inv table{width:100%;border-collapse:collapse;font-size:14px}
+.inv th,.inv td{padding:8px 4px;border-bottom:1px solid #e5e1d6;text-align:left}
+.inv .n{text-align:right}
+.inv .tot{font-weight:800;font-size:18px;color:#1F4E46}
+.items .it{display:grid;grid-template-columns:3fr 1fr 1fr auto;gap:8px;margin-top:8px}
+.items .it button{margin:0;padding:8px 12px}
+@media(max-width:560px){.items .it{grid-template-columns:1fr 1fr}}
+@media print{body{background:#fff} .wrap>*:not(#invwrap){display:none!important} #invwrap>*:not(.inv){display:none!important} .inv{border:0;padding:0;margin:0}}
+</style>
+<div id="invwrap">
+<section class="card" aria-label="Invoice details">
+  <div class="row">
+    <div><label for="from">From (your name, business, address, email)</label><textarea id="from">Alex Rivera Design
+12 Market St, Portland OR
+alex@example.com</textarea></div>
+    <div><label for="to">Bill to</label><textarea id="to">Northwind Coffee Co.
+Accounts Payable
+ap@northwind.example</textarea></div>
+  </div>
+  <div class="row3">
+    <div><label for="no">Invoice number</label><input id="no" value="INV-001"></div>
+    <div><label for="date">Invoice date</label><input id="date" type="date"></div>
+    <div><label for="terms">Payment terms (days)</label><input id="terms" type="number" value="14" min="0"></div>
+  </div>
+  <label>Line items</label>
+  <div class="items" id="items"></div>
+  <button class="ghost" id="add" type="button">+ Add line</button>
+  <div class="row3">
+    <div><label for="cur">Currency symbol</label><input id="cur" value="$"></div>
+    <div><label for="tax">Tax %</label><input id="tax" type="number" value="0" min="0" step="0.1"></div>
+    <div><label for="disc">Discount</label><input id="disc" type="number" value="0" min="0"></div>
+  </div>
+  <label for="notes">Notes and payment details</label>
+  <textarea id="notes">Thank you for your business. Pay by bank transfer or PayPal to alex@example.com.</textarea>
+  <button id="print" type="button">Print or save as PDF</button>
+  <div class="hint">Your details are saved in this browser only, so next time you just change the line items.</div>
+</section>
+<div class="inv" id="inv"></div>
+</div>
+<a class="cta" href="https://andrewlight.gumroad.com/l/qsocpn">Track every invoice and who still owes you with the Freelance Invoice &amp; Client Tracker →</a>
+
+<h2>What to put on a freelance invoice</h2>
+<ul>
+  <li><b>Your details and the client's:</b> names, business names, addresses and an email for questions.</li>
+  <li><b>A unique invoice number,</b> so you and the client can both refer to it. Number them in order: INV-001, INV-002 and so on.</li>
+  <li><b>Invoice date and due date.</b> "Net 14" or "Net 30" is common; shorter terms get you paid sooner.</li>
+  <li><b>What you did:</b> one line per deliverable or block of hours, with quantity, rate and amount.</li>
+  <li><b>Totals,</b> including any tax or discount, and the currency.</li>
+  <li><b>How to pay you:</b> bank details, PayPal, Stripe link or whatever you accept.</li>
+</ul>
+<h2>How to get invoices paid on time</h2>
+<p>Send the invoice the day the work is done, make paying you as easy as one click, state the due date clearly, and follow up the day after it passes. Mention a late fee in your terms up front if you plan to charge one; the <a href="../late-payment-fee-calculator/">late payment fee calculator</a> shows what to charge.</p>
+
+<h2>Common questions</h2>
+<h3>Is this invoice generator really free?</h3>
+<p>Yes. There is no sign-up, no watermark and no limit. Everything runs in your browser, and your details are saved only on your own device.</p>
+<h3>How do I save the invoice as a PDF?</h3>
+<p>Click Print or save as PDF, then choose Save as PDF (or Microsoft Print to PDF) as the printer. Only the invoice is printed, not the form or the rest of the page.</p>
+<h3>What payment terms should a freelancer use?</h3>
+<p>Net 14 or Net 30 are the most common. Shorter terms, or asking for a deposit up front on larger jobs, help with cash flow. Whatever you choose, put the actual due date on the invoice, not just the terms.</p>
+<h3>How do I keep track of which invoices are paid?</h3>
+<p>A simple tracker with one row per invoice, its due date and its status is enough. The Freelance Invoice & Client Tracker spreadsheet does this for you and flags anything overdue.</p>
+<h2>Spreadsheets that do this every month</h2>
+<ul>
+  <li><a href="https://andrewlight.gumroad.com/l/buezw"><b>Freelancer Paycheck System</b></a> ($19): pay yourself a steady salary from irregular income, with tax set-asides and buffer tracking.</li>
+  <li><a href="https://andrewlight.gumroad.com/l/wqisrv"><b>Freelance Rate &amp; Quote Calculator</b></a> ($14): hourly, day and retainer rates after tax and time off, plus quotes that hit them.</li>
+  <li><a href="https://andrewlight.gumroad.com/l/qsocpn"><b>Freelance Invoice &amp; Client Tracker</b></a> ($17): printable invoices, automatic overdue tracking, and a list of who to chase.</li>
+  <li><a href="https://andrewlight.gumroad.com/l/ptnqtp"><b>The Freelancer Money Kit</b></a> ($35): all three spreadsheets together, $15 less than buying them separately.</li>
+</ul>
+<h2>More free tools for freelancers</h2>
+<ul class="tools">
+  <li><a href="../"><b>Freelance paycheck calculator</b><span>Turn lumpy income into a steady monthly salary.</span></a></li>
+  <li><a href="../freelance-hourly-rate-calculator/"><b>Freelance hourly rate calculator</b><span>The hourly and day rate you need after tax, costs and time off.</span></a></li>
+  <li><a href="../quarterly-estimated-tax-calculator/"><b>Quarterly estimated tax calculator</b><span>Self-employment and income tax for 2026, split into four payments.</span></a></li>
+  <li><a href="../late-payment-fee-calculator/"><b>Late payment fee calculator</b><span>What an overdue client owes you, plus a reminder email.</span></a></li>
+</ul>
+<footer>Free tool, no sign-up, nothing you type leaves your browser. For planning only; not tax, legal or financial advice.</footer>
+</div>
+<script>
+
+const $=id=>document.getElementById(id);
+const F=['from','to','no','terms','cur','tax','disc','notes'];
+let items=[{d:'Logo design',q:1,r:850},{d:'Revisions (hours)',q:3,r:75}];
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function load(){try{const s=JSON.parse(localStorage.getItem('fpc-invoice')||'null');if(s){F.forEach(k=>{if(s[k]!=null)$(k).value=s[k]});if(s.items)items=s.items;}}catch(e){}}
+function save(){try{const s={items};F.forEach(k=>s[k]=$(k).value);localStorage.setItem('fpc-invoice',JSON.stringify(s));}catch(e){}}
+function drawItems(){
+  $('items').innerHTML=items.map((it,i)=>`<div class="it"><input aria-label="Description" data-i="${i}" data-k="d" value="${esc(it.d)}"><input aria-label="Quantity" type="number" data-i="${i}" data-k="q" value="${it.q}"><input aria-label="Rate" type="number" data-i="${i}" data-k="r" value="${it.r}"><button class="ghost" type="button" data-del="${i}" aria-label="Remove line">✕</button></div>`).join('');
+}
+function money(n){return $('cur').value+(Math.round(n*100)/100).toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2});}
+function render(){
+  const d=$('date').value?new Date($('date').value+'T12:00'):new Date();
+  const due=new Date(d);due.setDate(due.getDate()+(+$('terms').value||0));
+  const fd=x=>x.toLocaleDateString(undefined,{year:'numeric',month:'long',day:'numeric'});
+  const sub=items.reduce((a,it)=>a+(+it.q||0)*(+it.r||0),0), disc=+$('disc').value||0, tax=(sub-disc)*(+$('tax').value||0)/100, tot=sub-disc+tax;
+  let rows=items.map(it=>`<tr><td>${esc(it.d)}</td><td class="n">${+it.q||0}</td><td class="n">${money(+it.r||0)}</td><td class="n">${money((+it.q||0)*(+it.r||0))}</td></tr>`).join('');
+  rows+=`<tr><td colspan="3" class="n">Subtotal</td><td class="n">${money(sub)}</td></tr>`;
+  if(disc) rows+=`<tr><td colspan="3" class="n">Discount</td><td class="n">−${money(disc)}</td></tr>`;
+  if(tax) rows+=`<tr><td colspan="3" class="n">Tax (${+$('tax').value}%)</td><td class="n">${money(tax)}</td></tr>`;
+  rows+=`<tr><td colspan="3" class="n tot">Total due</td><td class="n tot">${money(tot)}</td></tr>`;
+  $('inv').innerHTML=`<h2>Invoice ${esc($('no').value)}</h2><div class="meta"><div><b>From</b>\n${esc($('from').value)}</div><div><b>Bill to</b>\n${esc($('to').value)}</div><div><b>Invoice date:</b> ${fd(d)}\n<b>Due date:</b> ${fd(due)}</div></div><table><tr><th>Description</th><th class="n">Qty</th><th class="n">Rate</th><th class="n">Amount</th></tr>${rows}</table><p style="white-space:pre-line;font-size:14px;margin-top:20px">${esc($('notes').value)}</p>`;
+  save();
+}
+load();
+if(!$('date').value) $('date').value=new Date().toISOString().slice(0,10);
+drawItems();render();
+document.querySelector('[aria-label="Invoice details"]').addEventListener('input',e=>{const t=e.target;if(t.dataset.k){items[+t.dataset.i][t.dataset.k]=t.dataset.k==='d'?t.value:+t.value;}render();});
+$('items').addEventListener('click',e=>{const i=e.target.dataset.del;if(i!=null){items.splice(+i,1);drawItems();render();}});
+$('add').addEventListener('click',()=>{items.push({d:'',q:1,r:0});drawItems();render();});
+$('print').addEventListener('click',()=>window.print());
+
+</script>
+</body>
+</html>

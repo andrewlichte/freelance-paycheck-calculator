@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quarterly Estimated Tax Calculator 2026 for Self-Employed & Freelancers (Free)</title>
+<meta name="description" content="Free 2026 quarterly estimated tax calculator for freelancers and the self-employed. Estimates self-employment tax and federal income tax, splits it into four payments, and shows the due dates.">
+<link rel="canonical" href="https://andrewlichte.github.io/freelance-paycheck-calculator/quarterly-estimated-tax-calculator/">
+<meta property="og:title" content="Quarterly estimated tax calculator (2026)">
+<meta property="og:description" content="Free 2026 quarterly estimated tax calculator for freelancers and the self-employed. Estimates self-employment tax and federal income tax, splits it into four payments, and shows the due dates.">
+<meta property="og:url" content="https://andrewlichte.github.io/freelance-paycheck-calculator/quarterly-estimated-tax-calculator/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../assets/site.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "Quarterly estimated tax calculator (2026)", "url": "https://andrewlichte.github.io/freelance-paycheck-calculator/quarterly-estimated-tax-calculator/", "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": "Free 2026 quarterly estimated tax calculator for freelancers and the self-employed. Estimates self-employment tax and federal income tax, splits it into four payments, and shows the due dates."}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Who has to pay quarterly estimated taxes?", "acceptedAnswer": {"@type": "Answer", "text": "In the US, you generally need to pay estimated tax if you expect to owe $1,000 or more for the year after withholding and credits. Most freelancers, contractors and sole proprietors with steady profit fall into this group."}}, {"@type": "Question", "name": "How much should I set aside for taxes as a freelancer?", "acceptedAnswer": {"@type": "Answer", "text": "Many self-employed people set aside 25 to 30% of each payment. The calculator above shows your own figure per $1,000 earned, based on 2026 brackets and self-employment tax."}}, {"@type": "Question", "name": "What happens if I miss a quarterly payment?", "acceptedAnswer": {"@type": "Answer", "text": "The IRS charges an underpayment penalty, which works like interest on the amount you should have paid, from the due date until you pay. Paying late is still better than not paying at all, because the penalty keeps growing."}}, {"@type": "Question", "name": "What is the safe harbor rule?", "acceptedAnswer": {"@type": "Answer", "text": "You generally avoid the underpayment penalty if your payments during the year cover at least 100% of last year's total tax (110% if your adjusted gross income was over $150,000), or 90% of this year's tax. Enter last year's tax in the calculator to see that amount."}}, {"@type": "Question", "name": "What is self-employment tax?", "acceptedAnswer": {"@type": "Answer", "text": "It is Social Security and Medicare tax for people who work for themselves. Employees split it with their employer, but freelancers pay both halves: 15.3% on 92.35% of profit, with the Social Security part stopping at the yearly wage base ($184,500 for 2026)."}}]}]}</script>
+</head>
+<body>
+<div class="wrap">
+<nav class="top"><a href="../">← Free freelancer money tools</a></nav>
+<header>
+  <div class="kicker">Free tool for the self-employed</div>
+  <h1>Quarterly estimated tax calculator (2026)</h1>
+  <p class="lead">Estimate your 2026 self-employment tax and federal income tax, see what to pay each quarter, and find out how much to set aside from every payment you receive.</p>
+</header>
+<section class="card" aria-label="Calculator">
+  <div class="row">
+    <div><label for="fs">Filing status</label><select id="fs"><option value="s">Single</option><option value="m">Married filing jointly</option></select></div>
+    <div><label for="net">Expected 2026 freelance profit</label><input id="net" type="number" value="70000" min="0"><div class="hint">Income minus business expenses.</div></div>
+  </div>
+  <div class="row">
+    <div><label for="w2">Other wages (W-2) for the year</label><input id="w2" type="number" value="0" min="0"><div class="hint">Yours plus your spouse's if filing jointly.</div></div>
+    <div><label for="wh">Tax already withheld from those wages</label><input id="wh" type="number" value="0" min="0"></div>
+  </div>
+  <div class="row">
+    <div><label for="st">State income tax %</label><input id="st" type="number" value="0" min="0" max="15" step="0.1"><div class="hint">0 for states with no income tax.</div></div>
+    <div><label for="ly">Last year's total federal tax (optional)</label><input id="ly" type="number" value="" min="0" placeholder="For the safe harbor amount"></div>
+  </div>
+  <button id="go">Estimate my quarterly payments</button>
+  <div class="results" id="out">
+    <div class="kpis">
+      <div class="kpi"><b>Each quarterly payment</b><span id="q">–</span></div>
+      <div class="kpi"><b>Total federal tax due</b><span id="tot">–</span></div>
+      <div class="kpi"><b>Set aside from each $1,000</b><span id="pct">–</span></div>
+    </div>
+    <table class="t" id="tbl"></table>
+    <p class="note" id="msg"></p>
+    <a class="cta" href="https://andrewlight.gumroad.com/l/buezw">Set tax aside automatically from every payment with the Freelancer Paycheck System →</a>
+  </div>
+</section>
+
+<h2>2026 quarterly estimated tax due dates</h2>
+<table class="t">
+<tr><th>Payment</th><th>Covers income earned</th><th>Due date</th></tr>
+<tr><td>Q1</td><td>Jan 1 to Mar 31, 2026</td><td>April 15, 2026</td></tr>
+<tr><td>Q2</td><td>Apr 1 to May 31, 2026</td><td>June 15, 2026</td></tr>
+<tr><td>Q3</td><td>Jun 1 to Aug 31, 2026</td><td>September 15, 2026</td></tr>
+<tr><td>Q4</td><td>Sep 1 to Dec 31, 2026</td><td>January 15, 2027</td></tr>
+</table>
+<p>You can pay online through IRS Direct Pay or your IRS online account, or by mail with Form 1040-ES vouchers. Most states with an income tax have their own quarterly payments on similar dates.</p>
+
+<h2>How this calculator works</h2>
+<ol>
+  <li><b>Self-employment tax.</b> 15.3% on 92.35% of your profit: 12.4% Social Security (up to the 2026 wage base of $184,500, less any W-2 wages) and 2.9% Medicare.</li>
+  <li><b>Deductions.</b> Half of your self-employment tax, the 2026 standard deduction ($16,100 single, $32,200 married filing jointly), and the 20% qualified business income deduction when your taxable income is under the threshold.</li>
+  <li><b>Income tax.</b> The 2026 federal brackets from 10% to 37% applied to what is left.</li>
+  <li><b>Split it in four.</b> Subtract tax already withheld from wages and divide the rest across the four due dates.</li>
+</ol>
+<p>It leaves out credits (such as the child tax credit), itemized deductions, the 0.9% additional Medicare tax on high earners and other income like investments, so treat the result as a planning estimate.</p>
+
+<h2>Common questions</h2>
+<h3>Who has to pay quarterly estimated taxes?</h3>
+<p>In the US, you generally need to pay estimated tax if you expect to owe $1,000 or more for the year after withholding and credits. Most freelancers, contractors and sole proprietors with steady profit fall into this group.</p>
+<h3>How much should I set aside for taxes as a freelancer?</h3>
+<p>Many self-employed people set aside 25 to 30% of each payment. The calculator above shows your own figure per $1,000 earned, based on 2026 brackets and self-employment tax.</p>
+<h3>What happens if I miss a quarterly payment?</h3>
+<p>The IRS charges an underpayment penalty, which works like interest on the amount you should have paid, from the due date until you pay. Paying late is still better than not paying at all, because the penalty keeps growing.</p>
+<h3>What is the safe harbor rule?</h3>
+<p>You generally avoid the underpayment penalty if your payments during the year cover at least 100% of last year's total tax (110% if your adjusted gross income was over $150,000), or 90% of this year's tax. Enter last year's tax in the calculator to see that amount.</p>
+<h3>What is self-employment tax?</h3>
+<p>It is Social Security and Medicare tax for people who work for themselves. Employees split it with their employer, but freelancers pay both halves: 15.3% on 92.35% of profit, with the Social Security part stopping at the yearly wage base ($184,500 for 2026).</p>
+<h2>Spreadsheets that do this every month</h2>
+<ul>
+  <li><a href="https://andrewlight.gumroad.com/l/buezw"><b>Freelancer Paycheck System</b></a> ($19): pay yourself a steady salary from irregular income, with tax set-asides and buffer tracking.</li>
+  <li><a href="https://andrewlight.gumroad.com/l/wqisrv"><b>Freelance Rate &amp; Quote Calculator</b></a> ($14): hourly, day and retainer rates after tax and time off, plus quotes that hit them.</li>
+  <li><a href="https://andrewlight.gumroad.com/l/qsocpn"><b>Freelance Invoice &amp; Client Tracker</b></a> ($17): printable invoices, automatic overdue tracking, and a list of who to chase.</li>
+  <li><a href="https://andrewlight.gumroad.com/l/ptnqtp"><b>The Freelancer Money Kit</b></a> ($35): all three spreadsheets together, $15 less than buying them separately.</li>
+</ul>
+<h2>More free tools for freelancers</h2>
+<ul class="tools">
+  <li><a href="../"><b>Freelance paycheck calculator</b><span>Turn lumpy income into a steady monthly salary.</span></a></li>
+  <li><a href="../freelance-hourly-rate-calculator/"><b>Freelance hourly rate calculator</b><span>The hourly and day rate you need after tax, costs and time off.</span></a></li>
+  <li><a href="../free-invoice-generator/"><b>Free invoice generator</b><span>Fill in, print or save as PDF. No sign-up.</span></a></li>
+  <li><a href="../late-payment-fee-calculator/"><b>Late payment fee calculator</b><span>What an overdue client owes you, plus a reminder email.</span></a></li>
+</ul>
+<footer>Free tool, no sign-up, nothing you type leaves your browser. For planning only; not tax, legal or financial advice.</footer>
+</div>
+<script>
+
+const $=id=>document.getElementById(id), v=id=>+$(id).value||0;
+const usd=n=>'$'+Math.round(n).toLocaleString();
+const B={s:{sd:16100,qbi:201750,br:[[12400,.10],[50400,.12],[105700,.22],[201775,.24],[256225,.32],[640600,.35],[Infinity,.37]]},
+         m:{sd:32200,qbi:403500,br:[[24800,.10],[100800,.12],[211400,.22],[403550,.24],[512450,.32],[768700,.35],[Infinity,.37]]}};
+function incomeTax(ti,br){let t=0,lo=0;for(const [hi,r] of br){if(ti>lo)t+=(Math.min(ti,hi)-lo)*r;lo=hi;}return t;}
+function calc(){
+  const f=B[$('fs').value], net=Math.max(0,v('net')), w2=v('w2'), wh=v('wh'), st=v('st')/100;
+  const base=net*0.9235;
+  const ss=0.124*Math.max(0,Math.min(base,184500-w2)), med=0.029*base, se=base>=400?ss+med:0;
+  const agi=net+w2-se/2;
+  let ti=Math.max(0,agi-f.sd), qbi=0;
+  if(ti<=f.qbi) qbi=Math.max(0,Math.min(0.2*(net-se/2),0.2*ti));
+  ti=Math.max(0,ti-qbi);
+  const it=incomeTax(ti,f.br), fed=se+it, due=Math.max(0,fed-wh), state=net*st;
+  const q=due/4, ly=v('ly');
+  $('q').textContent=usd(q+state/4); $('tot').textContent=usd(fed);
+  $('pct').textContent=net>0?usd((due+state)/net*1000):'–';
+  let rows=`<tr><td>Self-employment tax</td><td class="n">${usd(se)}</td></tr><tr><td>Federal income tax</td><td class="n">${usd(it)}</td></tr>`;
+  if(qbi>0) rows+=`<tr><td>QBI deduction used</td><td class="n">${usd(qbi)}</td></tr>`;
+  if(wh>0) rows+=`<tr><td>Less withheld from wages</td><td class="n">−${usd(wh)}</td></tr>`;
+  rows+=`<tr><td>Federal per quarter</td><td class="n">${usd(q)}</td></tr>`;
+  if(state>0) rows+=`<tr><td>State per quarter (estimate)</td><td class="n">${usd(state/4)}</td></tr>`;
+  $('tbl').innerHTML=rows;
+  let m=`Pay about ${usd(q)} to the IRS${state>0?` and ${usd(state/4)} to your state`:''} by each due date. Your effective federal rate on freelance profit is about ${net>0?Math.round(due/net*100):0}%.`;
+  if(ly>0){const sh=(agi>150000?1.1:1)*ly;m+=` Safe harbor: if you pay at least ${usd(sh/4)} a quarter (${agi>150000?'110':'100'}% of last year's tax), you generally avoid an underpayment penalty even if this year's bill turns out higher.`;}
+  if(ti+qbi>f.qbi) m+=' Your income is above the QBI threshold, so that deduction was left out; you may still qualify for part of it.';
+  $('msg').textContent=m;
+}
+$('go').addEventListener('click',calc); calc();
+
+</script>
+</body>
+</html>

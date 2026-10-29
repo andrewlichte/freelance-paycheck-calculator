@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Freelance Hourly Rate Calculator: What Should I Charge? (Free)</title>
+<meta name="description" content="Free freelance rate calculator. Find the hourly rate, day rate and monthly retainer you need after tax, business costs, time off and unbillable hours.">
+<link rel="canonical" href="https://andrewlichte.github.io/freelance-paycheck-calculator/freelance-hourly-rate-calculator/">
+<meta property="og:title" content="Freelance hourly rate calculator">
+<meta property="og:description" content="Free freelance rate calculator. Find the hourly rate, day rate and monthly retainer you need after tax, business costs, time off and unbillable hours.">
+<meta property="og:url" content="https://andrewlichte.github.io/freelance-paycheck-calculator/freelance-hourly-rate-calculator/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../assets/site.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "Freelance hourly rate calculator", "url": "https://andrewlichte.github.io/freelance-paycheck-calculator/freelance-hourly-rate-calculator/", "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": "Free freelance rate calculator. Find the hourly rate, day rate and monthly retainer you need after tax, business costs, time off and unbillable hours."}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is a good hourly rate for a freelancer?", "acceptedAnswer": {"@type": "Answer", "text": "There is no single number, but it should cover your take-home pay, your tax, your business costs and your unbillable time. Use the calculator to find your floor, then check what others in your field charge and price at or above it."}}, {"@type": "Question", "name": "How many billable hours does a freelancer have per year?", "acceptedAnswer": {"@type": "Answer", "text": "Usually between 1,000 and 1,400. A full-time employee is paid for about 2,080 hours, but freelancers lose time to sales, admin, invoicing and unpaid time off, so only 50 to 70% of working hours end up billable."}}, {"@type": "Question", "name": "How do I convert a salary to a freelance hourly rate?", "acceptedAnswer": {"@type": "Answer", "text": "A quick rule of thumb is to divide the salary by 1,000 to 1,200 instead of 2,080. A $70,000 salary becomes roughly $60 to $70 an hour. The calculator above gives a more exact figure from your own tax rate, costs and time off."}}, {"@type": "Question", "name": "Should I charge hourly or a day rate?", "acceptedAnswer": {"@type": "Answer", "text": "Hourly works well for small or unclear jobs. Day rates and project prices reward you for working quickly and are easier for clients to budget. Many freelancers work out an hourly rate first, then quote day rates or fixed prices built from it."}}]}]}</script>
+</head>
+<body>
+<div class="wrap">
+<nav class="top"><a href="../">← Free freelancer money tools</a></nav>
+<header>
+  <div class="kicker">Free tool for freelancers</div>
+  <h1>Freelance hourly rate calculator</h1>
+  <p class="lead">Tell it what you want to take home. It works out the hourly rate, day rate and retainer you need once tax, costs, time off and unbillable hours are counted.</p>
+</header>
+<section class="card" aria-label="Calculator">
+  <label for="take">Take-home pay you want per year (after tax)</label>
+  <input id="take" type="number" value="60000" min="0">
+  <div class="row">
+    <div><label for="exp">Business costs per year</label><input id="exp" type="number" value="4000" min="0"><div class="hint">Software, equipment, insurance, health cover, accountant.</div></div>
+    <div><label for="tax">Tax rate %</label><input id="tax" type="number" value="28" min="0" max="60"><div class="hint">US freelancers often use 25 to 30%.</div></div>
+  </div>
+  <div class="row3">
+    <div><label for="hpw">Hours you work per week</label><input id="hpw" type="number" value="40" min="1" max="100"></div>
+    <div><label for="bill">% of those hours billable</label><input id="bill" type="number" value="65" min="5" max="100"></div>
+    <div><label for="off">Weeks off per year</label><input id="off" type="number" value="6" min="0" max="40"><div class="hint">Holidays, vacation, sick days.</div></div>
+  </div>
+  <button id="go">Calculate my rate</button>
+  <div class="results" id="out">
+    <div class="kpis">
+      <div class="kpi"><b>Minimum hourly rate</b><span id="hr">–</span></div>
+      <div class="kpi"><b>Day rate</b><span id="dr">–</span></div>
+      <div class="kpi"><b>Monthly retainer (full time)</b><span id="mr">–</span></div>
+    </div>
+    <p class="note" id="msg"></p>
+    <a class="cta" href="https://andrewlight.gumroad.com/l/wqisrv">Turn this rate into quotes with the Freelance Rate &amp; Quote Calculator →</a>
+  </div>
+</section>
+
+<h2>How to work out your freelance hourly rate</h2>
+<p>Most new freelancers take their old salary, divide by 2,080 hours and charge that. It almost always leaves them underpaid, because as a freelancer you pay your own tax and costs, you take unpaid time off, and a good chunk of every week goes on admin, sales and email that no client pays for.</p>
+<ol>
+  <li><b>Start with the money you want to keep.</b> That is your take-home pay for the year.</li>
+  <li><b>Add tax and business costs.</b> Gross up the take-home for tax, then add software, equipment, insurance and anything your employer used to pay.</li>
+  <li><b>Count the hours you can actually bill.</b> Weeks worked, times hours per week, times the share of hours that are billable. 50 to 70% is typical.</li>
+  <li><b>Divide.</b> Revenue needed divided by billable hours is the lowest rate that gets you there.</li>
+</ol>
+<h2>The formula</h2>
+<p><b>Hourly rate = (take-home ÷ (1 − tax rate) + business costs) ÷ (weeks worked × hours per week × billable %)</b></p>
+<p>With the example numbers above: $60,000 take-home at 28% tax needs $83,333 of profit, plus $4,000 of costs is $87,333. 46 weeks × 40 hours × 65% is 1,196 billable hours, so the minimum rate is about $73 an hour.</p>
+
+<h2>Common questions</h2>
+<h3>What is a good hourly rate for a freelancer?</h3>
+<p>There is no single number, but it should cover your take-home pay, your tax, your business costs and your unbillable time. Use the calculator to find your floor, then check what others in your field charge and price at or above it.</p>
+<h3>How many billable hours does a freelancer have per year?</h3>
+<p>Usually between 1,000 and 1,400. A full-time employee is paid for about 2,080 hours, but freelancers lose time to sales, admin, invoicing and unpaid time off, so only 50 to 70% of working hours end up billable.</p>
+<h3>How do I convert a salary to a freelance hourly rate?</h3>
+<p>A quick rule of thumb is to divide the salary by 1,000 to 1,200 instead of 2,080. A $70,000 salary becomes roughly $60 to $70 an hour. The calculator above gives a more exact figure from your own tax rate, costs and time off.</p>
+<h3>Should I charge hourly or a day rate?</h3>
+<p>Hourly works well for small or unclear jobs. Day rates and project prices reward you for working quickly and are easier for clients to budget. Many freelancers work out an hourly rate first, then quote day rates or fixed prices built from it.</p>
+<h2>Spreadsheets that do this every month</h2>
+<ul>
+  <li><a href="https://andrewlight.gumroad.com/l/buezw"><b>Freelancer Paycheck System</b></a> ($19): pay yourself a steady salary from irregular income, with tax set-asides and buffer tracking.</li>
+  <li><a href="https://andrewlight.gumroad.com/l/wqisrv"><b>Freelance Rate &amp; Quote Calculator</b></a> ($14): hourly, day and retainer rates after tax and time off, plus quotes that hit them.</li>
+  <li><a href="https://andrewlight.gumroad.com/l/qsocpn"><b>Freelance Invoice &amp; Client Tracker</b></a> ($17): printable invoices, automatic overdue tracking, and a list of who to chase.</li>
+  <li><a href="https://andrewlight.gumroad.com/l/ptnqtp"><b>The Freelancer Money Kit</b></a> ($35): all three spreadsheets together, $15 less than buying them separately.</li>
+</ul>
+<h2>More free tools for freelancers</h2>
+<ul class="tools">
+  <li><a href="../"><b>Freelance paycheck calculator</b><span>Turn lumpy income into a steady monthly salary.</span></a></li>
+  <li><a href="../quarterly-estimated-tax-calculator/"><b>Quarterly estimated tax calculator</b><span>Self-employment and income tax for 2026, split into four payments.</span></a></li>
+  <li><a href="../free-invoice-generator/"><b>Free invoice generator</b><span>Fill in, print or save as PDF. No sign-up.</span></a></li>
+  <li><a href="../late-payment-fee-calculator/"><b>Late payment fee calculator</b><span>What an overdue client owes you, plus a reminder email.</span></a></li>
+</ul>
+<footer>Free tool, no sign-up, nothing you type leaves your browser. For planning only; not tax, legal or financial advice.</footer>
+</div>
+<script>
+
+const $=id=>document.getElementById(id), v=id=>+$(id).value||0;
+const usd=n=>'$'+Math.round(n).toLocaleString();
+function calc(){
+  const take=v('take'), exp=v('exp'), tax=Math.min(v('tax'),95)/100, hpw=v('hpw'), bill=v('bill')/100, weeks=Math.max(0,52-v('off'));
+  const gross=take/(1-tax)+exp, hours=weeks*hpw*bill;
+  if(hours<=0){$('msg').textContent='Enter some working weeks and billable hours.';return;}
+  const hr=gross/hours, perDay=hpw/5*bill;
+  $('hr').textContent=usd(hr); $('dr').textContent=usd(hr*perDay); $('mr').textContent=usd(gross/12);
+  const salaryHr=take/2080;
+  $('msg').textContent=`You need to bill ${usd(gross)} a year across about ${Math.round(hours).toLocaleString()} billable hours. A salaried job paying the same take-home works out to only ${usd(salaryHr)} an hour, which is why freelance rates look high. The day rate assumes ${perDay.toFixed(1)} billable hours a day, and the retainer is a full month of your time.`;
+}
+$('go').addEventListener('click',calc); calc();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Late Payment Fee Calculator for Overdue Invoices (Free, with Reminder Email)</title>
+<meta name="description" content="Free late fee calculator for overdue invoices. Work out interest or a flat late fee by days overdue and get a polite reminder email to send to the client.">
+<link rel="canonical" href="https://andrewlichte.github.io/freelance-paycheck-calculator/late-payment-fee-calculator/">
+<meta property="og:title" content="Late payment fee calculator">
+<meta property="og:description" content="Free late fee calculator for overdue invoices. Work out interest or a flat late fee by days overdue and get a polite reminder email to send to the client.">
+<meta property="og:url" content="https://andrewlichte.github.io/freelance-paycheck-calculator/late-payment-fee-calculator/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../assets/site.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "Late payment fee calculator", "url": "https://andrewlichte.github.io/freelance-paycheck-calculator/late-payment-fee-calculator/", "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": "Free late fee calculator for overdue invoices. Work out interest or a flat late fee by days overdue and get a polite reminder email to send to the client."}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is a reasonable late fee for a freelance invoice?", "acceptedAnswer": {"@type": "Answer", "text": "1 to 1.5% of the unpaid amount per month is the most common, or a one-off flat fee of around $25 to $50 for smaller invoices. Agree it in your contract first and keep it within your state's or country's legal limits."}}, {"@type": "Question", "name": "Can I add a late fee if it wasn't in my contract?", "acceptedAnswer": {"@type": "Answer", "text": "You can ask, but the client usually doesn't have to pay a fee they never agreed to. Add a late fee clause to future contracts and invoices so it applies next time."}}, {"@type": "Question", "name": "How do I calculate 1.5% per month interest on an invoice?", "acceptedAnswer": {"@type": "Answer", "text": "Multiply the invoice amount by 0.015, then by the number of days late divided by 30. A $2,400 invoice that is 45 days late comes to $2,400 \u00d7 0.015 \u00d7 1.5 = $54."}}, {"@type": "Question", "name": "When should I send a late payment reminder?", "acceptedAnswer": {"@type": "Answer", "text": "Send a friendly reminder a few days before the due date, another the day after it passes, then follow up weekly. Stay polite and specific: the invoice number, amount, due date and how to pay."}}]}]}</script>
+</head>
+<body>
+<div class="wrap">
+<nav class="top"><a href="../">← Free freelancer money tools</a></nav>
+<header>
+  <div class="kicker">Free tool for freelancers</div>
+  <h1>Late payment fee calculator</h1>
+  <p class="lead">Work out what an overdue client owes once a late fee or interest is added, then copy a polite reminder email that asks for it.</p>
+</header>
+<section class="card" aria-label="Calculator">
+  <div class="row">
+    <div><label for="amt">Invoice amount</label><input id="amt" type="number" value="2400" min="0"></div>
+    <div><label for="due">Due date</label><input id="due" type="date"></div>
+  </div>
+  <div class="row3">
+    <div><label for="mode">Fee type</label><select id="mode"><option value="m">% per month</option><option value="y">% per year (simple interest)</option><option value="f">Flat fee</option></select></div>
+    <div><label for="rate">Rate or flat fee</label><input id="rate" type="number" value="1.5" min="0" step="0.1"></div>
+    <div><label for="grace">Grace period (days)</label><input id="grace" type="number" value="0" min="0"></div>
+  </div>
+  <label for="asof">Calculate as of</label><input id="asof" type="date">
+  <button id="go">Calculate late fee</button>
+  <div class="results" id="out">
+    <div class="kpis">
+      <div class="kpi"><b>Days overdue</b><span id="days">–</span></div>
+      <div class="kpi"><b>Late fee</b><span id="fee">–</span></div>
+      <div class="kpi"><b>Total now owed</b><span id="tot">–</span></div>
+    </div>
+    <p class="note" id="msg"></p>
+    <label for="email">Reminder email you can copy</label>
+    <textarea id="email" style="min-height:220px"></textarea>
+    <button class="ghost" id="copy" type="button">Copy email</button>
+    <a class="cta" href="https://andrewlight.gumroad.com/l/qsocpn">See every overdue invoice at a glance with the Freelance Invoice &amp; Client Tracker →</a>
+  </div>
+</section>
+
+<h2>How late fees on invoices work</h2>
+<p>A late fee is only enforceable if the client agreed to it before the work started, so put it in your contract or proposal and repeat it on every invoice, for example: <i>"Payments received after the due date incur a late fee of 1.5% per month."</i> If it was never agreed, you can still ask, but treat it as a bargaining chip rather than a debt.</p>
+<h3>Common ways to charge</h3>
+<ul>
+  <li><b>1 to 1.5% per month</b> on the unpaid balance. This is the most common choice and easy to explain.</li>
+  <li><b>A flat fee</b> such as $25 or 5% of the invoice, charged once the invoice is late.</li>
+  <li><b>Statutory interest.</b> Some places set a rate by law. In the UK, for example, businesses can claim 8% plus the Bank of England base rate under the late payment legislation.</li>
+</ul>
+<p>Many US states cap interest rates, and the limits vary, so check your state's rules before you charge more than about 1.5% a month.</p>
+
+<h2>Common questions</h2>
+<h3>What is a reasonable late fee for a freelance invoice?</h3>
+<p>1 to 1.5% of the unpaid amount per month is the most common, or a one-off flat fee of around $25 to $50 for smaller invoices. Agree it in your contract first and keep it within your state's or country's legal limits.</p>
+<h3>Can I add a late fee if it wasn't in my contract?</h3>
+<p>You can ask, but the client usually doesn't have to pay a fee they never agreed to. Add a late fee clause to future contracts and invoices so it applies next time.</p>
+<h3>How do I calculate 1.5% per month interest on an invoice?</h3>
+<p>Multiply the invoice amount by 0.015, then by the number of days late divided by 30. A $2,400 invoice that is 45 days late comes to $2,400 × 0.015 × 1.5 = $54.</p>
+<h3>When should I send a late payment reminder?</h3>
+<p>Send a friendly reminder a few days before the due date, another the day after it passes, then follow up weekly. Stay polite and specific: the invoice number, amount, due date and how to pay.</p>
+<h2>Spreadsheets that do this every month</h2>
+<ul>
+  <li><a href="https://andrewlight.gumroad.com/l/buezw"><b>Freelancer Paycheck System</b></a> ($19): pay yourself a steady salary from irregular income, with tax set-asides and buffer tracking.</li>
+  <li><a href="https://andrewlight.gumroad.com/l/wqisrv"><b>Freelance Rate &amp; Quote Calculator</b></a> ($14): hourly, day and retainer rates after tax and time off, plus quotes that hit them.</li>
+  <li><a href="https://andrewlight.gumroad.com/l/qsocpn"><b>Freelance Invoice &amp; Client Tracker</b></a> ($17): printable invoices, automatic overdue tracking, and a list of who to chase.</li>
+  <li><a href="https://andrewlight.gumroad.com/l/ptnqtp"><b>The Freelancer Money Kit</b></a> ($35): all three spreadsheets together, $15 less than buying them separately.</li>
+</ul>
+<h2>More free tools for freelancers</h2>
+<ul class="tools">
+  <li><a href="../"><b>Freelance paycheck calculator</b><span>Turn lumpy income into a steady monthly salary.</span></a></li>
+  <li><a href="../freelance-hourly-rate-calculator/"><b>Freelance hourly rate calculator</b><span>The hourly and day rate you need after tax, costs and time off.</span></a></li>
+  <li><a href="../quarterly-estimated-tax-calculator/"><b>Quarterly estimated tax calculator</b><span>Self-employment and income tax for 2026, split into four payments.</span></a></li>
+  <li><a href="../free-invoice-generator/"><b>Free invoice generator</b><span>Fill in, print or save as PDF. No sign-up.</span></a></li>
+</ul>
+<footer>Free tool, no sign-up, nothing you type leaves your browser. For planning only; not tax, legal or financial advice.</footer>
+</div>
+<script>
+
+const $=id=>document.getElementById(id), v=id=>+$(id).value||0;
+const usd=n=>'$'+(Math.round(n*100)/100).toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2});
+const iso=d=>d.toISOString().slice(0,10);
+const t=new Date(); $('asof').value=iso(t); const d0=new Date(t); d0.setDate(d0.getDate()-45); $('due').value=iso(d0);
+function calc(){
+  const amt=v('amt'), rate=v('rate'), grace=v('grace'), mode=$('mode').value;
+  const due=new Date($('due').value+'T12:00'), asof=new Date($('asof').value+'T12:00');
+  const days=Math.max(0,Math.round((asof-due)/864e5)), late=Math.max(0,days-grace);
+  let fee=0;
+  if(late>0){ if(mode==='m') fee=amt*rate/100*late/30; else if(mode==='y') fee=amt*rate/100*late/365; else fee=rate; }
+  $('days').textContent=days; $('fee').textContent=usd(fee); $('tot').textContent=usd(amt+fee);
+  const desc=mode==='m'?`${rate}% per month`:mode==='y'?`${rate}% per year`:`a flat fee of ${usd(rate)}`;
+  $('msg').textContent= days===0 ? 'This invoice is not overdue yet.' : late===0 ? `It is ${days} days overdue but still inside your ${grace}-day grace period.` : `At ${desc}, ${late} chargeable days adds ${usd(fee)}.`;
+  const dd=due.toLocaleDateString(undefined,{year:'numeric',month:'long',day:'numeric'});
+  $('email').value=days===0?'':`Subject: Overdue invoice, ${days} days past due
+
+Hi [name],
+
+I hope you're well. A quick reminder that invoice [number] for ${usd(amt)} was due on ${dd} and is now ${days} days overdue.${fee>0?`
+
+As set out in our agreed terms, a late fee of ${desc} applies, which brings the balance to ${usd(amt+fee)}. If payment reaches me within 7 days I'm happy to waive the fee.`:''}
+
+You can pay by [payment method]. If there's a problem with the invoice or anything I can help with, just let me know.
+
+Thanks,
+[your name]`;
+}
+$('go').addEventListener('click',calc);
+['amt','due','mode','rate','grace','asof'].forEach(id=>$(id).addEventListener('input',calc));
+$('copy').addEventListener('click',()=>{try{navigator.clipboard.writeText($('email').value);$('copy').textContent='Copied';}catch(e){$('email').select();}});
+calc();
+
+</script>
+</body>
+</html>
